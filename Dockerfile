@@ -17,6 +17,8 @@ RUN apt-get install -y python3 python3-pip
 # Install requirements
 RUN pip3 install -r requirements.txt
 
+# -----------------------------------------------------------------------------
+
 # Stage 2: Runtime stage
 FROM ubuntu:22.04
 
