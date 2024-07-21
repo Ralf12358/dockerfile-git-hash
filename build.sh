@@ -4,10 +4,18 @@
 IMAGE_NAME="myapp"
 TAG="latest"
 
-# Prompt for Git credentials
-read -p "Enter your Git username: " GIT_USERNAME
-read -sp "Enter your Git password: " GIT_PASSWORD
-echo
+# Get Git credentials from global config
+GIT_USERNAME=$(git config --global user.name)
+GIT_PASSWORD=$(git config --global user.password)
+
+# Check if credentials are set
+if [ -z "$GIT_USERNAME" ] || [ -z "$GIT_PASSWORD" ]; then
+    echo "Error: Git username or password not found in global config."
+    echo "Please set them using:"
+    echo "git config --global user.name \"Your Username\""
+    echo "git config --global user.password \"Your Password\""
+    exit 1
+fi
 
 # Build the Docker image
 DOCKER_BUILDKIT=1 docker build \

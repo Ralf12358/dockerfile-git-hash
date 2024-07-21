@@ -4,9 +4,23 @@ REM Set the Docker image name and tag
 set IMAGE_NAME=myapp
 set TAG=latest
 
-REM Prompt for Git credentials
-set /p GIT_USERNAME=Enter your Git username: 
-set /p GIT_PASSWORD=Enter your Git password: 
+REM Get Git credentials from global config
+for /f "tokens=*" %%a in ('git config --global user.name') do set GIT_USERNAME=%%a
+for /f "tokens=*" %%a in ('git config --global user.password') do set GIT_PASSWORD=%%a
+
+REM Check if credentials are set
+if "%GIT_USERNAME%"=="" (
+    echo Error: Git username not found in global config.
+    echo Please set it using:
+    echo git config --global user.name "Your Username"
+    exit /b 1
+)
+if "%GIT_PASSWORD%"=="" (
+    echo Error: Git password not found in global config.
+    echo Please set it using:
+    echo git config --global user.password "Your Password"
+    exit /b 1
+)
 
 REM Build the Docker image
 set DOCKER_BUILDKIT=1
