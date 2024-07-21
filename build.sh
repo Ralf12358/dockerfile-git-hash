@@ -4,19 +4,15 @@
 IMAGE_NAME="myapp"
 TAG="latest"
 
-# Create ssh-agent script
-cat << EOF > ssh-agent-script.sh
-#!/bin/sh
-eval \$(ssh-agent)
-ssh-add ~/.ssh/id_rsa
-EOF
+# Prompt for Git credentials
+read -p "Enter your Git username: " GIT_USERNAME
+read -sp "Enter your Git password: " GIT_PASSWORD
+echo
 
 # Build the Docker image
 DOCKER_BUILDKIT=1 docker build \
-  --ssh default \
+  --build-arg GIT_USERNAME="${GIT_USERNAME}" \
+  --build-arg GIT_PASSWORD="${GIT_PASSWORD}" \
   -t ${IMAGE_NAME}:${TAG} .
 
 echo "Docker image ${IMAGE_NAME}:${TAG} has been built successfully."
-
-# Clean up
-rm ssh-agent-script.sh

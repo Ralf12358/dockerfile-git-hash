@@ -5,11 +5,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      ssh:
-        - default
+      args:
+        - GIT_USERNAME=${GIT_USERNAME}
+        - GIT_PASSWORD=${GIT_PASSWORD}
     image: myapp:latest
-    volumes:
-      - ~/.ssh:/root/.ssh:ro
-    environment:
-      - SSH_AUTH_SOCK=/ssh-agent
     command: ["python3", "/app/your_script.py"]

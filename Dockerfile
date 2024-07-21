@@ -1,21 +1,17 @@
 # Stage 1: Build stage
 FROM ubuntu:22.04 AS builder
 
-# Install git, ssh, and other necessary build tools
-RUN apt-get update && apt-get install -y git openssh-client
+# Install git and other necessary build tools
+RUN apt-get update && apt-get install -y git
 
 # Set the working directory
 WORKDIR /build
 
-# Add the SSH key and set up known hosts
-RUN mkdir -p /root/.ssh && chmod 700 /root/.ssh
-COPY ssh-agent-script.sh /root/.ssh/
-RUN chmod +x /root/.ssh/ssh-agent-script.sh
-
 # Clone the specific git hash (replace with your repository URL and desired hash)
 # Adjust the repository URL and hash as needed
-RUN --mount=type=ssh . /root/.ssh/ssh-agent-script.sh && \
-    git clone --depth 1 --branch <specific-hash> git@github.com:username/repository.git .
+ARG GIT_USERNAME
+ARG GIT_PASSWORD
+RUN git clone --depth 1 --branch <specific-hash> https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/username/repository.git .
 
 # Install Python and pip if not already in the base image
 RUN apt-get install -y python3 python3-pip
