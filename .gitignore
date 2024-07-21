@@ -1,4 +1,4 @@
-dockerfile-git-hash-*
+dockerfile_git_hash-*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
