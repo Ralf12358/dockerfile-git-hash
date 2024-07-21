@@ -10,9 +10,10 @@ WORKDIR /build
 # Copy the .gitconfig file from the host
 COPY .gitconfig /root/.gitconfig
 
-# Clone the repository and checkout the specific commit hash
-RUN git clone https://github.com/Ralf12358/reqver.git . && \
-    git checkout e8f6f6f09b273f03b01ef01e1631bb3d1ef55f9b
+# Clone only the specific commit with depth 1
+RUN git clone --depth 1 --single-branch https://github.com/Ralf12358/reqver.git . && \
+    git fetch --depth 1 origin e8f6f6f09b273f03b01ef01e1631bb3d1ef55f9b && \
+    git checkout FETCH_HEAD
 
 # Install Python and pip if not already in the base image
 RUN apt-get install -y python3 python3-pip
