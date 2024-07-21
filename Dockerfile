@@ -11,7 +11,7 @@ WORKDIR /build
 # Adjust the repository URL and hash as needed
 ARG GIT_USERNAME
 ARG GIT_PASSWORD
-RUN git clone --depth 1 --branch <specific-hash> https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/username/repository.git .
+RUN git clone --depth 1 --branch e8f6f6f09b273f03b01ef01e1631bb3d1ef55f9b https://github.com/Ralf12358/reqver.git .
 
 # Install Python and pip if not already in the base image
 RUN apt-get install -y python3 python3-pip
