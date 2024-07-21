@@ -5,8 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      args:
-        - GIT_USERNAME=${GIT_USERNAME}
-        - GIT_PASSWORD=${GIT_PASSWORD}
     image: myapp:latest
     command: ["python3", "/app/your_script.py"]
+    volumes:
+      - ${HOME}/.gitconfig:/root/.gitconfig:ro
