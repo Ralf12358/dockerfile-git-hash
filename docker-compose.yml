@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        - GITCONFIG=${HOME}/.gitconfig
     image: myapp:latest
-    command: ["python3", "/app/your_script.py"]
-    volumes:
-      - ${HOME}/.gitconfig:/root/.gitconfig:ro
+    command: ["python3", "/app/reqver/reqver/cli.py"]

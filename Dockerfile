@@ -8,7 +8,8 @@ RUN apt-get install -y python3 python3-pip
 RUN pip3 install --upgrade pip
 
 # Copy the .gitconfig file from the host
-COPY .gitconfig /root/.gitconfig
+ARG GITCONFIG
+COPY ${GITCONFIG} /root/.gitconfig
 
 WORKDIR /build
 RUN touch __init__.py
