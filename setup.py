@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name="dockerfile-git-hash",
     version="0.1.2",
-    packages=find_packages(),
+    packages=find_packages(include=['dockerfile_git_hash']),
     install_requires=[
         # Add any dependencies here
     ],
