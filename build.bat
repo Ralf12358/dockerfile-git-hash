@@ -5,9 +5,11 @@ set IMAGE_NAME=myapp
 set TAG=latest
 
 REM Create ssh-agent script
-echo #!/bin/sh > ssh-agent-script.sh
-echo eval $$(ssh-agent) >> ssh-agent-script.sh
-echo ssh-add ~/.ssh/id_rsa >> ssh-agent-script.sh
+(
+echo #!/bin/sh
+echo eval $$(ssh-agent^)
+echo ssh-add ~/.ssh/id_rsa
+) > ssh-agent-script.sh
 
 REM Build the Docker image
 set DOCKER_BUILDKIT=1
