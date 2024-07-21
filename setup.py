@@ -9,7 +9,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'dockerfile-git-hash=dockerfile_git_hash.dockerfile_git_hash:main',
+            'dockerfile-git-hash=dockerfile_git_hash:main',
         ],
     },
     author="Your Name",
