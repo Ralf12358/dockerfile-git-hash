@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      ssh:
+        - default
+    image: myapp:latest
+    volumes:
+      - ~/.ssh:/root/.ssh:ro
+    environment:
+      - SSH_AUTH_SOCK=/ssh-agent
+    command: ["python3", "/app/your_script.py"]
