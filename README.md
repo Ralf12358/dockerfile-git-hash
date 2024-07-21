@@ -57,7 +57,7 @@ To release a new version of Docky on PyPI, follow these steps:
    ```
 3. Build the distribution packages:
    ```
-   python setup.py sdist bdist_wheel
+   python setup.py sdist
    ```
 4. Upload the packages to PyPI:
    ```
