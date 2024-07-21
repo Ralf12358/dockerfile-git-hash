@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="docky",
+    name="dockerfile-git-hash",
     version="0.1.0",
     packages=find_packages(),
     install_requires=[
@@ -9,7 +9,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'docky=docky.docky:main',
+            'dockerfile-git-hash=dockerfile-git-hash.dockerfile-git-hash:main',
         ],
     },
     author="Your Name",
@@ -17,7 +17,7 @@ setup(
     description="A tool to update commit hashes in Dockerfiles",
     long_description=open('README.md').read(),
     long_description_content_type="text/markdown",
-    url="https://github.com/Ralf12358/docky",
+    url="https://github.com/Ralf12358/dockerfile-git-hash",
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",

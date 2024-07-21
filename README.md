@@ -1,25 +1,25 @@
-# Docky
+# dockerfile-git-hash
 
-Docky is a command-line tool to update the commit hashes in a Dockerfile. It parses the Dockerfile for git checkouts, fetches the latest commit hashes for the repositories, and updates the Dockerfile accordingly.
+dockerfile-git-hash is a command-line tool to update the commit hashes in a Dockerfile. It parses the Dockerfile for git checkouts, fetches the latest commit hashes for the repositories, and updates the Dockerfile accordingly.
 
 ## Installation
 
-You can install Docky using pip:
+You can install dockerfile-git-hash using pip:
 
 ```
-pip install docky
+pip install dockerfile-git-hash
 ```
 
 ## Usage
 
 ```
-docky <dockerfile_path> <destination_path>
+dockerfile-git-hash <dockerfile_path> <destination_path>
 ```
 
 - `<dockerfile_path>`: Path to the Dockerfile or directory containing the Dockerfile
 - `<destination_path>`: Destination path for the updated Dockerfile
 
-If a directory is provided instead of a Dockerfile, Docky will look for a file named "Dockerfile" in that directory.
+If a directory is provided instead of a Dockerfile, dockerfile-git-hash will look for a file named "Dockerfile" in that directory.
 
 ## Features
 
@@ -32,7 +32,7 @@ If a directory is provided instead of a Dockerfile, Docky will look for a file n
 ## Example
 
 ```
-docky ./my_project/Dockerfile ./updated_dockerfile/Dockerfile
+dockerfile-git-hash ./my_project/Dockerfile ./updated_dockerfile/Dockerfile
 ```
 
 This command will update the Dockerfile in the `my_project` directory and save the updated version in the `updated_dockerfile` directory.
@@ -47,7 +47,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Releasing on PyPI
 
-To release a new version of Docky on PyPI, follow these steps:
+To release a new version of dockerfile-git-hash on PyPI, follow these steps:
 
 1. Update the version number in `setup.py`.
 2. Create a new tag with the version number:
